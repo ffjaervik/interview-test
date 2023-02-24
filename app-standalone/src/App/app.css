@@ -38,6 +38,9 @@ ol, ul {
 .square-win {
     background-color: green;
   }
+  .square-loose{
+    background-color: red;
+  }
 
 .square:focus {
     outline: none;
@@ -51,10 +54,15 @@ ol, ul {
     display: flex;
     flex-direction: row;
     text-align: center;
+    justify-content: space-evenly;
 }
 
 .game-info {
     margin-left: 20px;
+}
+.players-info {
+    margin-left: 20px;
+    
 }
 
 .appContainer {
