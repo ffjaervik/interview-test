@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 
 const AppHeader = () => (
-    <Navbar fluid>
+    <Navbar >
         <Navbar.Brand>
             <Link to="/">Tic-Tac-Toe (Standalone)</Link>
         </Navbar.Brand>

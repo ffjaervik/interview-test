@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Board from "../Board";
+import Score from "../Score";
 
 /**
  * A game of tic-tac-toe.
@@ -10,7 +11,31 @@ const Game = () => {
   ]); // Start of game
   const [stepNumber, setStepNumber] = useState(0);
   const [xIsNext, setXisNext] = useState(true);
-  const [highlightWin, setHighlightWin] = useState("");
+  const [xScore, setXScore] = useState(0);
+  const [oScore, setOScore] = useState(0);
+  const [newGame, setNewGame] = useState(false);
+  //playerNames, playerIcons, handleNamesChange, handleIconsChange are passed to Score component
+  const [playersNames, setPlayersNames] = useState({
+    player1: "Player 1",
+    player2: "Player 2",
+  });
+  const [playerIcons, setPlayerIcons] = useState({
+    player1: "X",
+    player2: "O",
+  });
+
+  const handleNamesChange = () => {
+    setPlayersNames({
+      player1: prompt("Enter Player 1 name: "),
+      player2: prompt("Enter Player 2 name: "),
+    });
+  };
+  const handleIconsChange = () => {
+    setPlayerIcons({
+      player1: prompt("Enter Player 1 icon: "),
+      player2: prompt("Enter Player 2 icon: "),
+    });
+  };
 
   const calculateWinner = (squares) => {
     const lines = [
@@ -31,7 +56,6 @@ const Game = () => {
         squares[a] === squares[b] &&
         squares[a] === squares[c]
       ) {
-        console.log(squares[a]);
         return { player: squares[a], line: [a, b, c] };
       }
     }
@@ -48,11 +72,13 @@ const Game = () => {
       return;
     }
 
-    squares[i] = xIsNext ? "X" : "O";
+    squares[i] = xIsNext ? playerIcons.player1 : playerIcons.player2;
 
     setGameHistory([...history, { squares }]);
     setStepNumber(history.length);
     setXisNext(!xIsNext);
+    // console.log("stepNumber", stepNumber);
+    // console.log("gamehistory", gameHistory);
   };
 
   const jumpTo = (step) => {
@@ -61,7 +87,27 @@ const Game = () => {
   };
 
   const current = gameHistory[stepNumber];
+  console.log("current", current);
   const winner = calculateWinner(current.squares);
+
+  //onClick event with Boolean state switch to trigger the useEffect hook that resets the game.
+  const startNewGame = () => {
+    setNewGame(!newGame);
+  };
+
+  //Resets game and track score after a winner is declared and the new game button is clicked by the user
+  useEffect(() => {
+    if (winner) {
+      if (winner.player === "X") {
+        setXScore(xScore + 1);
+      } else {
+        setOScore(oScore + 1);
+      }
+      setGameHistory([{ squares: Array(9).fill(null) }]);
+      setStepNumber(0);
+      setXisNext(true);
+    }
+  }, [newGame]);
 
   const moves = gameHistory.map((step, move) => {
     const desc = move ? "Go to move #" + move : "Go to game start";
@@ -72,11 +118,22 @@ const Game = () => {
     );
   });
 
+  //displays name of winner and user who's turn it is. If all Squares are filled and there is no winner, it displays "Draw"
   let status;
   if (winner) {
-    status = "Winner: " + winner;
+    if (winner.player === "X") {
+      status = "Winner: " + playersNames.player1 + "!";
+    } else {
+      status = "Winner: " + playersNames.player2 + "!";
+    }
+  } else if (!current.squares.includes(null)) {
+    status = "Draw";
   } else {
-    status = "Next player: " + (xIsNext ? "X" : "O");
+    status =
+      "Next Move: " +
+      (xIsNext
+        ? `${playersNames.player1}(${playerIcons.player1})`
+        : `${playersNames.player2}(${playerIcons.player2})`);
   }
 
   return (
@@ -90,8 +147,16 @@ const Game = () => {
       </div>
       <div className="game-info">
         <div>{status}</div>
-        <ol>{moves}</ol>
+        {!winner && <ol>{moves}</ol>}
+        {winner && <button onClick={startNewGame}>Play Next Round</button>}
       </div>
+      <Score
+        playersNames={playersNames}
+        handleIconsChange={handleIconsChange}
+        handleNamesChange={handleNamesChange}
+        xScore={xScore}
+        oScore={oScore}
+      />
     </div>
   );
 };
