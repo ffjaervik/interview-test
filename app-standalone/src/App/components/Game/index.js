@@ -13,8 +13,7 @@ const Game = () => {
   const [xIsNext, setXisNext] = useState(true);
   const [xScore, setXScore] = useState(0);
   const [oScore, setOScore] = useState(0);
-  const [newGame, setNewGame] = useState(false);
-  //playerNames, playerIcons, handleNamesChange, handleIconsChange are passed to Score component
+  const [newGame, setNewGame] = React.useState(false);
   const [playersNames, setPlayersNames] = useState({
     player1: "Player 1",
     player2: "Player 2",
@@ -37,6 +36,7 @@ const Game = () => {
     });
   };
 
+  //Runs after each click and valudates a winning move.
   const calculateWinner = (squares) => {
     const lines = [
       [0, 1, 2],
@@ -87,15 +87,13 @@ const Game = () => {
   };
 
   const current = gameHistory[stepNumber];
-  console.log("current", current);
+  // console.log("current", current);
   const winner = calculateWinner(current.squares);
 
-  //onClick event with Boolean state switch to trigger the useEffect hook that resets the game.
-  const startNewGame = () => {
-    setNewGame(!newGame);
-  };
+  
 
-  //Resets game and track score after a winner is declared and the new game button is clicked by the user
+  //Trigger effect to reset the game and track score after a winner is declared
+  //newGame(boolean) serves as trigger
   useEffect(() => {
     if (winner) {
       if (winner.player === "X") {
@@ -127,7 +125,7 @@ const Game = () => {
       status = "Winner: " + playersNames.player2 + "!";
     }
   } else if (!current.squares.includes(null)) {
-    status = "Draw";
+    status = "Draw!";
   } else {
     status =
       "Next Move: " +
@@ -148,7 +146,9 @@ const Game = () => {
       <div className="game-info">
         <div>{status}</div>
         {!winner && <ol>{moves}</ol>}
-        {winner && <button onClick={startNewGame}>Play Next Round</button>}
+        {winner && (
+          <button id="button" onClick={() => setNewGame(!newGame)}>Play Next Round</button>
+        )}
       </div>
       <Score
         playersNames={playersNames}

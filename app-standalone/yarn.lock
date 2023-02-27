@@ -1235,10 +1235,10 @@
     "lodash" "^4.17.15"
     "lodash-es" "^4.17.15"
 
-"@sinonjs/commons@^1", "@sinonjs/commons@^1.6.0", "@sinonjs/commons@^1.7.0", "@sinonjs/commons@^1.7.2":
-  "integrity" "sha512-wEj54PfsZ5jGSwMX68G8ZXFawcSglQSXqCftWX3ec8MDUzQdHgcKvw97awHbY0efQEL5iKUOAmmVtoYgmrSG4Q=="
-  "resolved" "https://registry.npmjs.org/@sinonjs/commons/-/commons-1.8.0.tgz"
-  "version" "1.8.0"
+"@sinonjs/commons@^1.6.0", "@sinonjs/commons@^1.7.0", "@sinonjs/commons@^1.8.1":
+  "integrity" "sha512-Ky+XkAkqPZSm3NLBeUng77EBQl3cmeJhITaGHdYH8kjVB+aun3S4XBRti2zt17mtt0mIUDiNxYeoJm6drVvBJQ=="
+  "resolved" "https://registry.npmjs.org/@sinonjs/commons/-/commons-1.8.6.tgz"
+  "version" "1.8.6"
   dependencies:
     "type-detect" "4.0.8"
 
@@ -1249,27 +1249,19 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sinonjs/formatio@^5.0.1":
-  "integrity" "sha512-KaiQ5pBf1MpS09MuA0kp6KBQt2JUOQycqVG1NZXvzeaXe5LGFqAKueIS0bw4w0P9r7KuBSVdUk5QjXsUdu2CxQ=="
-  "resolved" "https://registry.npmjs.org/@sinonjs/formatio/-/formatio-5.0.1.tgz"
-  "version" "5.0.1"
-  dependencies:
-    "@sinonjs/commons" "^1"
-    "@sinonjs/samsam" "^5.0.2"
-
-"@sinonjs/samsam@^5.0.2", "@sinonjs/samsam@^5.0.3":
-  "integrity" "sha512-QucHkc2uMJ0pFGjJUDP3F9dq5dx8QIaqISl9QgwLOh6P9yv877uONPGXh/OH/0zmM3tW1JjuJltAZV2l7zU+uQ=="
-  "resolved" "https://registry.npmjs.org/@sinonjs/samsam/-/samsam-5.0.3.tgz"
-  "version" "5.0.3"
+"@sinonjs/samsam@^5.3.1":
+  "integrity" "sha512-1Hc0b1TtyfBu8ixF/tpfSHTVWKwCBLY4QJbkgnE7HcwyvT2xArDxb4K7dMgqRm3szI+LJbzmW/s4xxEhv6hwDg=="
+  "resolved" "https://registry.npmjs.org/@sinonjs/samsam/-/samsam-5.3.1.tgz"
+  "version" "5.3.1"
   dependencies:
     "@sinonjs/commons" "^1.6.0"
     "lodash.get" "^4.4.2"
     "type-detect" "^4.0.8"
 
 "@sinonjs/text-encoding@^0.7.1":
-  "integrity" "sha512-+iTbntw2IZPb/anVDbypzfQa+ay64MW0Zo8aJ8gZPWMMK6/OubMVb6lUPMagqjOPnmtauXnFCACVl3O7ogjeqQ=="
-  "resolved" "https://registry.npmjs.org/@sinonjs/text-encoding/-/text-encoding-0.7.1.tgz"
-  "version" "0.7.1"
+  "integrity" "sha512-sXXKG+uL9IrKqViTtao2Ws6dy0znu9sOaP1di/jKGW1M6VssO8vlpXCQcpZ+jisQ1tTFAC5Jo/EOzFbggBagFQ=="
+  "resolved" "https://registry.npmjs.org/@sinonjs/text-encoding/-/text-encoding-0.7.2.tgz"
+  "version" "0.7.2"
 
 "@svgr/babel-plugin-add-jsx-attribute@^4.2.0":
   "integrity" "sha512-j7KnilGyZzYr/jhcrSYS3FGWMZVaqyCG0vzMCwzvei0coIkczuYMcniK07nI0aHJINciujjH11T72ICW5eL5Ig=="
@@ -6450,9 +6442,9 @@
     "object.assign" "^4.1.0"
 
 "just-extend@^4.0.2":
-  "integrity" "sha512-ApcjaOdVTJ7y4r08xI5wIqpvwS48Q0PBG4DJROcEkH1f8MdAiNFyFxz3xoL0LWAVwjrwPYZdVHHxhRHcx/uGLA=="
-  "resolved" "https://registry.npmjs.org/just-extend/-/just-extend-4.1.0.tgz"
-  "version" "4.1.0"
+  "integrity" "sha512-g3UB796vUFIY90VIv/WX3L2c8CS2MdWUww3CNrYmqza1Fg0DURc2K/O4YrnklBdQarSJ/y8JnJYDGc+1iumQjg=="
+  "resolved" "https://registry.npmjs.org/just-extend/-/just-extend-4.2.1.tgz"
+  "version" "4.2.1"
 
 "killable@^1.0.1":
   "integrity" "sha512-LzqtLKlUwirEUyl/nicirVmNiPvYs7l5n8wOPP7fyJVpUPkvCnW/vuiXGpylGUlnPDnB7311rARzAt3Mhswpjg=="
@@ -6650,7 +6642,7 @@
   "version" "4.4.0"
 
 "lodash.get@^4.4.2":
-  "integrity" "sha1-LRd/ZS+jHpObRDjVNBSZ36OCXpk= sha512-z+Uw/vLuy6gQe8cfaFWD7p0wVv8fJl3mbzXh33RS+0oW2wvUqiRXiQ69gLWSLpgB5/6sU+r6BlQR0MBILadqTQ=="
+  "integrity" "sha512-z+Uw/vLuy6gQe8cfaFWD7p0wVv8fJl3mbzXh33RS+0oW2wvUqiRXiQ69gLWSLpgB5/6sU+r6BlQR0MBILadqTQ=="
   "resolved" "https://registry.npmjs.org/lodash.get/-/lodash.get-4.4.2.tgz"
   "version" "4.4.2"
 
@@ -7118,10 +7110,10 @@
   "resolved" "https://registry.npmjs.org/nice-try/-/nice-try-1.0.5.tgz"
   "version" "1.0.5"
 
-"nise@^4.0.1":
-  "integrity" "sha512-EGlhjm7/4KvmmE6B/UFsKh7eHykRl9VH+au8dduHLCyWUO/hr7+N+WtTvDUwc9zHuM1IaIJs/0lQ6Ag1jDkQSg=="
-  "resolved" "https://registry.npmjs.org/nise/-/nise-4.0.3.tgz"
-  "version" "4.0.3"
+"nise@^4.0.4":
+  "integrity" "sha512-eQMEmGN/8arp0xsvGoQ+B1qvSkR73B1nWSCh7nOt5neMCtwcQVYQGdzQMhcNscktTsWB54xnlSQFzOAPJD8nXA=="
+  "resolved" "https://registry.npmjs.org/nise/-/nise-4.1.0.tgz"
+  "version" "4.1.0"
   dependencies:
     "@sinonjs/commons" "^1.7.0"
     "@sinonjs/fake-timers" "^6.0.0"
@@ -9844,17 +9836,16 @@
   dependencies:
     "is-arrayish" "^0.3.1"
 
-"sinon@^9.0.2":
-  "integrity" "sha512-0uF8Q/QHkizNUmbK3LRFqx5cpTttEVXudywY9Uwzy8bTfZUhljZ7ARzSxnRHWYWtVTeh4Cw+tTb3iU21FQVO9A=="
-  "resolved" "https://registry.npmjs.org/sinon/-/sinon-9.0.2.tgz"
-  "version" "9.0.2"
+"sinon@^9.2.4":
+  "integrity" "sha512-zljcULZQsJxVra28qIAL6ow1Z9tpattkCTEJR4RBP3TGc00FcttsP5pK284Nas5WjMZU5Yzy3kAIp3B3KRf5Yg=="
+  "resolved" "https://registry.npmjs.org/sinon/-/sinon-9.2.4.tgz"
+  "version" "9.2.4"
   dependencies:
-    "@sinonjs/commons" "^1.7.2"
+    "@sinonjs/commons" "^1.8.1"
     "@sinonjs/fake-timers" "^6.0.1"
-    "@sinonjs/formatio" "^5.0.1"
-    "@sinonjs/samsam" "^5.0.3"
+    "@sinonjs/samsam" "^5.3.1"
     "diff" "^4.0.2"
-    "nise" "^4.0.1"
+    "nise" "^4.0.4"
     "supports-color" "^7.1.0"
 
 "sisteransi@^1.0.4":
