@@ -47,11 +47,32 @@ The directories are:
 Please answer the following questions:
     
 1. Comparing the app-original and app-standalone code bases. The app-standalone code base has put each component in a separate file and directory structure.   
-   * Why do you think that was done, what are the advantages / disadvantages?
+Why do you think that was done, what are the advantages / disadvantages?
+
+- It is a common react folder structure convention where each component file (index.js) is located in its own folder (NameOfComponent). This structure convetion serves the purpose of managing the component tree.
+
+  #### ADVANTAGES:
+- Separation of concern. Ideally, each component is responsible for one thing only.
+- It makes the codebase more organised, structured and easier to read and mantain.
+- Allows to update individual components without affecting other components.
+- Gives the ability to reuse individual components and follow DRY principle.
+- The error messages are more specific, accurate & readable and thertefore easier to debug.
+- The components are easier to test in isolation.
+- Makes the app more scalable and modular. Components can be added, removed or updated without affecting other components.
+
+  #### DISADVANTAGES:
+- More files to create, mantain, test & debug.
+- Components have to be imported. This is a bit more time consuming.
+- Can be more challanging creating a component structure and the relationships between components and their props.
+
 
 2. Thinking about a production ready app, what do you think is missing from all the examples? *Hint: the square component in the standalone app has one*
 
+- Dedicated unit tests for each component. It allows to test each component in isolation and make sure it works as expected. It is a imperative for test driven development.
+
 3. Are you familiar with Redux? If so what is the basic idea behind it and what would be a good case for using it?
+
+- Personally I have not used Redux yet. I know it is a popular state management tool for react and is used to create global states that can by accessed by any component in the app. Redux is mostly used by large applitions that have complex nested states that need to be accessed by multiple components. It eases the process of passing props and avoiding prop drilling. React offers a library native approach to this with the Context API and 2 web hooks: useContext and useReducer.
 
 4. *If you are interested in the full-stack role* Please take a look at the partial implementation of an express routes in backend/router.js.
     * Thinking of a production application, what issues do you see with this code? *List as many as you like* 
@@ -60,7 +81,7 @@ Please answer the following questions:
 
 With either the app-standalone or app-redux (**not both** - whichever you are comfortable with), please complete the following changes:
 
-1. Update the app so that is highlights the winning move.
+1. Update the app so that it highlights the winning move.
 2. Update the app so that it allows for a named player X and Y, and it keeps a league table of who won each game.
 3. If you get time, implement something that you think that the app could do and is cool. What other things would you change.
 
