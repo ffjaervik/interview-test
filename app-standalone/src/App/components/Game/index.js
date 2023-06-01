@@ -59,7 +59,6 @@ const Game = () => {
         return { player: squares[a], line: [a, b, c] };
       }
     }
-
     return null;
   };
 
