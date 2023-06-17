@@ -1,13 +1,14 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useState, useEffect } from "react";
 import Board from "../Board";
 import Score from "../Score/Score";
 import calculateWinner from "../../utils/calculateWinner";
-
 
 const defaultState = {
   gameHistory: [{ squares: Array(9).fill(null) }],
   stepNumber: 0,
   xIsNext: true,
+  xScore: 0,
+  oScore: 0,
 };
 
 const reducer = (state, action) => {
@@ -30,8 +31,31 @@ const reducer = (state, action) => {
         xIsNext: action.step % 2 === 0,
       };
 
+    case "player-victory":
+      if (action.winner.player === "X") {
+        console.log("X is winner");
+        return {
+          ...state,
+          gameHistory: [{ squares: Array(9).fill(null) }],
+          stepNumber: 0,
+          xIsNext: true,
+          xScore: state.xScore + 1,
+        };
+      } else if (action.winner.player === "O") {
+        console.log("O is winner");
+        return {
+          ...state,
+          gameHistory: [{ squares: Array(9).fill(null) }],
+          stepNumber: 0,
+          xIsNext: true,
+          oScore: state.oScore + 1,
+        };
+      }
+
     case "load-new-game":
-      return {};
+      return {
+        state,
+      };
 
     default:
       return state;
@@ -42,21 +66,21 @@ const reducer = (state, action) => {
  * A game of tic-tac-toe.
  */
 const Game = () => {
+  const [newGame, setNewGame] = useState(false);
   const [state, dispatch] = useReducer(reducer, defaultState);
-  const { gameHistory, stepNumber, xIsNext } = state;
-  const xScore = 0;
-    const oScore = 0;
+  const { gameHistory, stepNumber, xIsNext, xScore, oScore } = state;
 
   const current = gameHistory[stepNumber];
   const winner = calculateWinner(current.squares);
-  console.log(winner)
-  
+
+  useEffect(() => {
+    console.log("useEffect run");
+    if (winner) {
+      dispatch({ type: "player-victory", winner });
+    }
+  }, [newGame]);
 
   const handleClick = (i) => {
-    // const history = gameHistory.slice(0, stepNumber + 1);
-    // const current = history[history.length - 1];
-    // const squares = current.squares.slice();
-
     const currentSquares = [...current.squares];
 
     if (winner || currentSquares[i]) {
@@ -90,17 +114,28 @@ const Game = () => {
   } else {
     status = "Next player: " + (xIsNext ? "X" : "O");
   }
-
+  console.log(state);
   return (
     <div className="game">
       <div className="game-board">
-        <Board squares={current.squares} onClick={(i) => handleClick(i)} winHighlight={winner ? winner.squares : []}/>
+        <Board
+          squares={current.squares}
+          onClick={(i) => handleClick(i)}
+          winHighlight={winner ? winner.lines : []}
+        />
       </div>
       <div className="game-info">
         <div>{status}</div>
-        <ol>{moves}</ol>
+        {!winner ? (
+          <ol>{moves}</ol>
+        ) : (
+          <button id="button" onClick={() => setNewGame(!newGame)}>
+            Play Next Round
+          </button>
+        )}
       </div>
-        <Score xScore={xScore} oScore={oScore}/>
+      <Score xScore={xScore} oScore={oScore} />
+      <button onClick={() => dispatch("load-new-game")}>load game</button>
     </div>
   );
 };
