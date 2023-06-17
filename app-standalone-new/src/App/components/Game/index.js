@@ -49,6 +49,7 @@ const Game = () => {
 
   const current = gameHistory[stepNumber];
   const winner = calculateWinner(current.squares);
+  console.log(winner)
   
 
   const handleClick = (i) => {
@@ -93,7 +94,7 @@ const Game = () => {
   return (
     <div className="game">
       <div className="game-board">
-        <Board squares={current.squares} onClick={(i) => handleClick(i)} />
+        <Board squares={current.squares} onClick={(i) => handleClick(i)} winHighlight={winner ? winner.squares : []}/>
       </div>
       <div className="game-info">
         <div>{status}</div>
