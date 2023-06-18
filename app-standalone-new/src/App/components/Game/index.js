@@ -2,58 +2,13 @@ import React, { useReducer, useState, useEffect } from "react";
 import Board from "../Board";
 import Score from "../Score/Score";
 import calculateWinner from "../../utils/calculateWinner";
+import reducer from "../../hooks/reducer";
 
 const defaultState = {
   gameHistory: [{ squares: Array(9).fill(null) }],
   stepNumber: 0,
   xIsNext: true,
-  xScore: 0,
-  oScore: 0,
-};
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "user-makes-move":
-      return {
-        ...state,
-        gameHistory: [
-          ...state.gameHistory.slice(0, state.stepNumber + 1),
-          action.currentGameHistory,
-        ],
-        stepNumber: state.stepNumber + 1,
-        xIsNext: !state.xIsNext,
-      };
-
-    case "user-jumps-to-move-number":
-      return {
-        ...state,
-        stepNumber: action.step,
-        xIsNext: action.step % 2 === 0,
-      };
-
-    case "load-new-game":
-      if (action.winner.player === "X") {
-        console.log("X is winner");
-        return {
-          ...state,
-          gameHistory: [{ squares: Array(9).fill(null) }],
-          stepNumber: 0,
-          xIsNext: true,
-          xScore: state.xScore + 1,
-        };
-      } else if (action.winner.player === "O") {
-        console.log("O is winner");
-        return {
-          ...state,
-          gameHistory: [{ squares: Array(9).fill(null) }],
-          stepNumber: 0,
-          xIsNext: true,
-          oScore: state.oScore + 1,
-        };
-      }
-    default:
-      return state;
-  }
+  playerScores: { xScore: 0, oScore: 0 },
 };
 
 /**
@@ -62,7 +17,7 @@ const reducer = (state, action) => {
 const Game = () => {
   const [newGame, setNewGame] = useState(false);
   const [state, dispatch] = useReducer(reducer, defaultState);
-  const { gameHistory, stepNumber, xIsNext, xScore, oScore } = state;
+  const { gameHistory, stepNumber, xIsNext, playerScores } = state;
 
   const current = gameHistory[stepNumber];
   const winner = calculateWinner(current.squares);
@@ -128,7 +83,7 @@ const Game = () => {
           </button>
         )}
       </div>
-      <Score xScore={xScore} oScore={oScore} />
+      <Score xScore={playerScores.xScore} oScore={playerScores.oScore} />
     </div>
   );
 };
