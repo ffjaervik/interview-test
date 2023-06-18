@@ -31,7 +31,7 @@ const reducer = (state, action) => {
         xIsNext: action.step % 2 === 0,
       };
 
-    case "player-victory":
+    case "load-new-game":
       if (action.winner.player === "X") {
         console.log("X is winner");
         return {
@@ -51,12 +51,6 @@ const reducer = (state, action) => {
           oScore: state.oScore + 1,
         };
       }
-
-    case "load-new-game":
-      return {
-        state,
-      };
-
     default:
       return state;
   }
@@ -76,7 +70,7 @@ const Game = () => {
   useEffect(() => {
     console.log("useEffect run");
     if (winner) {
-      dispatch({ type: "player-victory", winner });
+      dispatch({ type: "load-new-game", winner });
     }
   }, [newGame]);
 
@@ -135,7 +129,6 @@ const Game = () => {
         )}
       </div>
       <Score xScore={xScore} oScore={oScore} />
-      <button onClick={() => dispatch("load-new-game")}>load game</button>
     </div>
   );
 };
